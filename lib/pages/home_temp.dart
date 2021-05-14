@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_application_widgets/pages/utils/icon_string_util.dart";
 import "package:flutter_application_widgets/pages/providers/menu_provider.dart";
 
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,6 +12,26 @@ class HomePage extends StatelessWidget {
       body: _list(context),
     );
   }
+  
+  /*List<Widget> _crearItems(BuildContext context,){
+    List<Widget> lista = new List<Widget>();
+    for(String opt in opciones){
+      final tempWidget = ListTile(
+        title: Text(opt),
+        subtitle: Text('Subtitulo '+ opt),
+        leading: Icon(Icons.account_box),
+        trailing: Icon(Icons.keyboard_arrow_right_rounded),
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageTempDos(opt),
+          ));
+        }, 
+      );
+      lista..add(tempWidget)..add(Divider());
+      //lista.add(tempWidget);
+      //lista.add(Divider());
+    }
+    return lista;
+  }*/
 
   Widget _list(BuildContext context){
     return FutureBuilder(
@@ -37,10 +56,11 @@ class HomePage extends StatelessWidget {
           color: Colors.lightBlueAccent,
         ),
         onTap: (){
-          showDialog(
+          Navigator.pushNamed(context, otp['ruta']);
+          /*showDialog(
             context: context,
             builder: (BuildContext context) => _dialog(context, otp['texto']),
-          );
+          );*/
         },
       );
       opciones..add(widgetTemp)..add(Divider());
